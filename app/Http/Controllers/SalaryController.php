@@ -35,9 +35,9 @@ class SalaryController extends Controller
             'employee_id' => 'required|exists:employees,id',
             'grossSalary' => 'required|numeric',
             'totalDeduction' => 'required|numeric',
-            'netSalary' => 'required|numeric',
             'month' => 'required',
         ]);
+        $validated['netSalary'] = $validated['grossSalary'] - $validated['totalDeduction'];
         Salary::create($validated);
         return redirect()->route('salaries.index')->with('success', 'Salary record created successfully.');
     }
@@ -69,9 +69,9 @@ class SalaryController extends Controller
             'employee_id' => 'required|exists:employees,id',
             'grossSalary' => 'required|numeric',
             'totalDeduction' => 'required|numeric',
-            'netSalary' => 'required|numeric',
             'month' => 'required',
         ]);
+        $validated['netSalary'] = $validated['grossSalary'] - $validated['totalDeduction'];
         $salary->update($validated);
         return redirect()->route('salaries.index')->with('success', 'Salary record updated successfully.');
     }

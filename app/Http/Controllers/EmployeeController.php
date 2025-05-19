@@ -92,4 +92,16 @@ class EmployeeController extends Controller
         $employee->delete();
         return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
     }
+
+    /**
+     * Dashboard statistics for the dashboard view.
+     */
+    public function dashboard()
+    {
+        $totalEmployees = \App\Models\Employee::count();
+        $totalDepartments = \App\Models\Department::count();
+        $totalSalaries = \App\Models\Salary::count();
+        $totalNetSalary = \App\Models\Salary::sum('netSalary');
+        return view('dashboard', compact('totalEmployees', 'totalDepartments', 'totalSalaries', 'totalNetSalary'));
+    }
 }

@@ -14,20 +14,20 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-gray-800 p-4">
+    <body class="font-sans antialiased bg-white text-black">
+        <div class="min-h-screen bg-white">
+            <nav class="bg-black p-4 shadow-md">
                 <div class="container mx-auto flex flex-wrap items-center justify-between">
-                    <a href="/dashboard" class="text-white font-bold text-xl">EPMS</a>
+                    <a href="/dashboard" class="text-orange-500 font-bold text-xl">EPMS</a>
                     <div class="flex space-x-4">
-                        <a href="/dashboard" class="text-gray-300 hover:text-white">Dashboard</a>
-                        <a href="/departments" class="text-gray-300 hover:text-white">Departments</a>
-                        <a href="/employees" class="text-gray-300 hover:text-white">Employees</a>
-                        <a href="/salaries" class="text-gray-300 hover:text-white">Salaries</a>
-                        <a href="/reports/payroll" class="text-gray-300 hover:text-white">Reports</a>
+                        <a href="/dashboard" class="text-white hover:text-orange-400">Dashboard</a>
+                        <a href="/departments" class="text-white hover:text-orange-400">Departments</a>
+                        <a href="/employees" class="text-white hover:text-orange-400">Employees</a>
+                        <a href="/salaries" class="text-white hover:text-orange-400">Salaries</a>
+                        <a href="/reports/payroll" class="text-white hover:text-orange-400">Reports</a>
                         <form method="POST" action="{{ route('logout') }}" class="inline">
                             @csrf
-                            <button type="submit" class="text-gray-300 hover:text-white bg-transparent border-none cursor-pointer">Logout</button>
+                            <button type="submit" class="text-white hover:text-orange-400 bg-transparent border-none cursor-pointer">Logout</button>
                         </form>
                     </div>
                 </div>
@@ -37,15 +37,15 @@
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white shadow">
+                <header class="bg-orange-50 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                        <span class="text-2xl font-bold text-black">{{ $header }}</span>
                     </div>
                 </header>
             @endisset
 
             <!-- Page Content -->
-            <main>
+            <main class="bg-white min-h-[80vh] py-8">
                 @yield('content')
             </main>
         </div>

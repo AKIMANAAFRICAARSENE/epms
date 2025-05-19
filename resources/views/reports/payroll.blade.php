@@ -6,41 +6,39 @@
     <div class="flex justify-between items-center mb-6">
         <form method="GET" class="flex items-center space-x-4">
             <label for="month" class="font-semibold">Month:</label>
-            <input type="text" name="month" id="month" value="{{ $month }}" placeholder="YYYY-MM" class="border-gray-300 rounded px-3 py-2" required>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Filter</button>
+            <input type="text" name="month" id="month" value="{{ $month }}" placeholder="YYYY-MM" class="border-black rounded px-3 py-2" required>
+            <button type="submit" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-black">Filter</button>
         </form>
-        <button onclick="window.print()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 print:hidden">Print Report</button>
+        <button onclick="window.print()" class="bg-black text-white px-4 py-2 rounded hover:bg-orange-500 print:hidden">Print Report</button>
     </div>
-    <div class="overflow-x-auto bg-white rounded shadow">
+    <div class="overflow-x-auto bg-white rounded-lg shadow-lg border border-black">
         <table class="min-w-full">
-            <thead class="bg-gray-200">
+            <thead class="bg-orange-200">
                 <tr>
-                    <th class="px-4 py-2">#</th>
-                    <th class="px-4 py-2">First Name</th>
-                    <th class="px-4 py-2">Last Name</th>
-                    <th class="px-4 py-2">Position</th>
-                    <th class="px-4 py-2">Department</th>
-                    <th class="px-4 py-2">Net Salary</th>
+                    <th class="px-6 py-3 text-center align-middle text-black border-b border-black">First Name</th>
+                    <th class="px-6 py-3 text-center align-middle text-black border-b border-black">Last Name</th>
+                    <th class="px-6 py-3 text-center align-middle text-black border-b border-black">Position</th>
+                    <th class="px-6 py-3 text-center align-middle text-black border-b border-black">Department</th>
+                    <th class="px-6 py-3 text-center align-middle text-black border-b border-black">Net Salary</th>
                 </tr>
             </thead>
             <tbody>
                 @php $total = 0; @endphp
                 @foreach($salaries as $salary)
-                <tr class="border-b">
-                    <td class="px-4 py-2">{{ $loop->iteration }}</td>
-                    <td class="px-4 py-2">{{ $salary->employee->firstName }}</td>
-                    <td class="px-4 py-2">{{ $salary->employee->lastName }}</td>
-                    <td class="px-4 py-2">{{ $salary->employee->position }}</td>
-                    <td class="px-4 py-2">{{ $salary->employee->department->departmentName ?? '-' }}</td>
-                    <td class="px-4 py-2">{{ $salary->netSalary }}</td>
+                <tr class="border-b border-black hover:bg-orange-50">
+                    <td class="px-6 py-3 text-center align-middle whitespace-nowrap text-black">{{ $salary->employee->firstName }}</td>
+                    <td class="px-6 py-3 text-center align-middle whitespace-nowrap text-black">{{ $salary->employee->lastName }}</td>
+                    <td class="px-6 py-3 text-center align-middle whitespace-nowrap text-black">{{ $salary->employee->position }}</td>
+                    <td class="px-6 py-3 text-center align-middle whitespace-nowrap text-black">{{ $salary->employee->department->departmentName ?? '-' }}</td>
+                    <td class="px-6 py-3 text-center align-middle whitespace-nowrap text-black">{{ $salary->netSalary }}</td>
                 </tr>
                 @php $total += $salary->netSalary; @endphp
                 @endforeach
             </tbody>
             <tfoot>
-                <tr class="font-bold bg-gray-100">
-                    <td colspan="5" class="px-4 py-2 text-right">Total Net Salary:</td>
-                    <td class="px-4 py-2">{{ $total }}</td>
+                <tr class="font-bold bg-orange-100">
+                    <td colspan="4" class="px-6 py-3 text-right align-middle text-black">Total Net Salary:</td>
+                    <td class="px-6 py-3 text-center align-middle text-black">{{ $total }}</td>
                 </tr>
             </tfoot>
         </table>
